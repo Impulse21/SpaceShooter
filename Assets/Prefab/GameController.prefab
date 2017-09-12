@@ -54,11 +54,111 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delayStart: 0
   spawnInterval: 1
-  delayWave: 3
-  enemiesPerWave: 5
-  maxSpeed: 10
-  minSpeed: 0.1
-  maxRotationSpeed: 20
+  delayWave: 10
+  waves:
+  - enemies:
+    - numOfEnemies: 5
+      gameObject: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
+        type: 2}
+      minSpeed: 0.1
+      maxSpeed: 10
+      maxRotation: 20
+  - enemies:
+    - numOfEnemies: 6
+      gameObject: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
+        type: 2}
+      minSpeed: 0.1
+      maxSpeed: 10
+      maxRotation: 20
+  - enemies:
+    - numOfEnemies: 7
+      gameObject: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
+        type: 2}
+      minSpeed: 0.1
+      maxSpeed: 10
+      maxRotation: 0
+  - enemies:
+    - numOfEnemies: 8
+      gameObject: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
+        type: 2}
+      minSpeed: 0.1
+      maxSpeed: 10
+      maxRotation: 0
+  - enemies:
+    - numOfEnemies: 10
+      gameObject: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
+        type: 2}
+      minSpeed: 0.1
+      maxSpeed: 10
+      maxRotation: 20
+  - enemies:
+    - numOfEnemies: 10
+      gameObject: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
+        type: 2}
+      minSpeed: 0.1
+      maxSpeed: 10
+      maxRotation: 10
+    - numOfEnemies: 1
+      gameObject: {fileID: 1794622370154868, guid: d4d47ae55b54c495e992a173c734c87f,
+        type: 2}
+      minSpeed: 8
+      maxSpeed: 10
+      maxRotation: 0
+  - enemies:
+    - numOfEnemies: 10
+      gameObject: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
+        type: 2}
+      minSpeed: 0.1
+      maxSpeed: 10
+      maxRotation: 0
+    - numOfEnemies: 2
+      gameObject: {fileID: 1794622370154868, guid: d4d47ae55b54c495e992a173c734c87f,
+        type: 2}
+      minSpeed: 8
+      maxSpeed: 10
+      maxRotation: 0
+  - enemies:
+    - numOfEnemies: 10
+      gameObject: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
+        type: 2}
+      minSpeed: 0.1
+      maxSpeed: 10
+      maxRotation: 0
+    - numOfEnemies: 3
+      gameObject: {fileID: 1794622370154868, guid: d4d47ae55b54c495e992a173c734c87f,
+        type: 2}
+      minSpeed: 8
+      maxSpeed: 10
+      maxRotation: 0
+  - enemies:
+    - numOfEnemies: 10
+      gameObject: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
+        type: 2}
+      minSpeed: 0.1
+      maxSpeed: 10
+      maxRotation: 0
+    - numOfEnemies: 4
+      gameObject: {fileID: 1794622370154868, guid: d4d47ae55b54c495e992a173c734c87f,
+        type: 2}
+      minSpeed: 8
+      maxSpeed: 10
+      maxRotation: 0
+  - enemies:
+    - numOfEnemies: 10
+      gameObject: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
+        type: 2}
+      minSpeed: 0.1
+      maxSpeed: 10
+      maxRotation: 0
+    - numOfEnemies: 5
+      gameObject: {fileID: 1794622370154868, guid: d4d47ae55b54c495e992a173c734c87f,
+        type: 2}
+      minSpeed: 8
+      maxSpeed: 10
+      maxRotation: 0
+  scoreGuiText: {fileID: 0}
+  gameOverGuiText: {fileID: 0}
+  restartGuiText: {fileID: 0}
 --- !u!114 &114220334552831156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -76,6 +176,17 @@ MonoBehaviour:
     numObjectInPool: 20
     canGrow: 1
   - objectToPool: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
+      type: 2}
+    numObjectInPool: 5
+    canGrow: 0
+  - objectToPool: {fileID: 129538, guid: 25175c06f2b0c4a24af6d61c7b9b40f2, type: 2}
+    numObjectInPool: 5
+    canGrow: 0
+  - objectToPool: {fileID: 1084593592743618, guid: 6ef49828b5d3642db9813ecbdac785a6,
+      type: 2}
+    numObjectInPool: 5
+    canGrow: 1
+  - objectToPool: {fileID: 1794622370154868, guid: d4d47ae55b54c495e992a173c734c87f,
       type: 2}
     numObjectInPool: 5
     canGrow: 1

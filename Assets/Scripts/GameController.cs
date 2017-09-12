@@ -3,6 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[System.Serializable]
+public struct EnemyDetails
+{
+    public int numOfEnemies;
+    public GameObject gameObject;
+
+    public float minSpeed;
+    public float maxSpeed;
+
+    public float maxRotation;
+}
+
+[System.Serializable]
+public struct WaveDetails
+{
+    public List<EnemyDetails> enemies;
+}
+
 public class GameController : MonoBehaviour 
 {
     public static GameController sharedInstance;
@@ -11,12 +29,7 @@ public class GameController : MonoBehaviour
     public int delayStart;
     public int spawnInterval;
     public int delayWave;
-    public int enemiesPerWave = 5;
-
-    [Header("Enemies Details")]
-    public float maxSpeed = 10.0f;
-    public float minSpeed = 0.1f;
-    public float maxRotationSpeed = 20.0f;
+    public List<WaveDetails> waves;
 
     [Header("UI Components")]
     public GUIText scoreGuiText;
@@ -55,7 +68,7 @@ public class GameController : MonoBehaviour
 
         while (true)
         {
-            spawnEnemies();
+            yield return spawnEnemies();
 
             yield return new WaitForSeconds(delayWave);
 
@@ -70,22 +83,17 @@ public class GameController : MonoBehaviour
     }
 
     // Coroutine to spawn elements
-    void spawnEnemies()
+    IEnumerator spawnEnemies()
     {
-        for (int i = 0; i < enemiesPerWave; i++)
+        WaveDetails waveDetail = getWave();
+
+        foreach (EnemyDetails enemy in waveDetail.enemies)
         {
-            Vector3 topRight = Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth, Camera.main.pixelHeight));
-            Vector3 bottomRight = Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth, 0.0f));
-
-            Vector3 spawnLocation = new Vector3(topRight.x, Random.Range(bottomRight.y, topRight.y), 0.0f);
-            GameObject enemies = ObjectPool.SharedInstance.GetPooledObject("Meteor");
-
-            if (enemies != null)
+            for (int i = 0; i < enemy.numOfEnemies; i++)
             {
-                enemies.transform.position = spawnLocation;
-                enemies.SetActive(true);
-               
-                generateEnemiesMovement(enemies);
+                spawnObject(enemy);
+
+                yield return new WaitForSeconds(spawnInterval);
             }
         }
     }
@@ -108,7 +116,7 @@ public class GameController : MonoBehaviour
         scoreGuiText.text = "Score: " + playerScore.ToString();
     }
 
-    private void generateEnemiesMovement(GameObject gameObj)
+    private void generateEnemiesMovement(GameObject gameObj, float minSpeed, float maxSpeed)
     {
         Rigidbody2D rigBody = gameObj.GetComponent<Rigidbody2D>();
 
@@ -121,5 +129,29 @@ public class GameController : MonoBehaviour
         {
             Debug.Log("Unable to get Enemies Rigid Body 2D");
         } 
+    }
+
+    private WaveDetails getWave()
+    {
+        int waveIndex = Random.Range(0, waves.Count);
+
+        return waves[waveIndex];
+    }
+
+    private void spawnObject(EnemyDetails enemyDetails)
+    {
+        Vector3 topRight = Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth, Camera.main.pixelHeight));
+        Vector3 bottomRight = Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth, 0.0f));
+
+        Vector3 spawnLocation = new Vector3(topRight.x, Random.Range(bottomRight.y, topRight.y), 0.0f);
+        GameObject enemy = ObjectPool.SharedInstance.GetPooledObject(enemyDetails.gameObject.tag);
+
+        if (enemy != null)
+        {
+            enemy.transform.position = spawnLocation;
+            enemy.SetActive(true);
+
+            generateEnemiesMovement(enemy, enemyDetails.minSpeed, enemyDetails.maxSpeed);
+        }
     }
 }
