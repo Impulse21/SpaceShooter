@@ -60,21 +60,21 @@ MonoBehaviour:
     - numOfEnemies: 5
       gameObject: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
         type: 2}
-      minSpeed: 0.1
+      minSpeed: 2
       maxSpeed: 10
       maxRotation: 20
   - enemies:
     - numOfEnemies: 6
       gameObject: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
         type: 2}
-      minSpeed: 0.1
+      minSpeed: 2
       maxSpeed: 10
       maxRotation: 20
   - enemies:
     - numOfEnemies: 7
       gameObject: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
         type: 2}
-      minSpeed: 0.1
+      minSpeed: 2
       maxSpeed: 10
       maxRotation: 0
   - enemies:
@@ -88,14 +88,14 @@ MonoBehaviour:
     - numOfEnemies: 10
       gameObject: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
         type: 2}
-      minSpeed: 0.1
+      minSpeed: 2
       maxSpeed: 10
       maxRotation: 20
   - enemies:
     - numOfEnemies: 10
       gameObject: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
         type: 2}
-      minSpeed: 0.1
+      minSpeed: 2
       maxSpeed: 10
       maxRotation: 10
     - numOfEnemies: 1
@@ -108,7 +108,7 @@ MonoBehaviour:
     - numOfEnemies: 10
       gameObject: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
         type: 2}
-      minSpeed: 0.1
+      minSpeed: 2
       maxSpeed: 10
       maxRotation: 0
     - numOfEnemies: 2
@@ -121,7 +121,7 @@ MonoBehaviour:
     - numOfEnemies: 10
       gameObject: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
         type: 2}
-      minSpeed: 0.1
+      minSpeed: 2
       maxSpeed: 10
       maxRotation: 0
     - numOfEnemies: 3
@@ -134,7 +134,7 @@ MonoBehaviour:
     - numOfEnemies: 10
       gameObject: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
         type: 2}
-      minSpeed: 0.1
+      minSpeed: 2
       maxSpeed: 10
       maxRotation: 0
     - numOfEnemies: 4
@@ -147,7 +147,7 @@ MonoBehaviour:
     - numOfEnemies: 10
       gameObject: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
         type: 2}
-      minSpeed: 0.1
+      minSpeed: 2
       maxSpeed: 10
       maxRotation: 0
     - numOfEnemies: 5
@@ -180,7 +180,7 @@ MonoBehaviour:
     numObjectInPool: 5
     canGrow: 0
   - objectToPool: {fileID: 129538, guid: 25175c06f2b0c4a24af6d61c7b9b40f2, type: 2}
-    numObjectInPool: 5
+    numObjectInPool: 10
     canGrow: 0
   - objectToPool: {fileID: 1084593592743618, guid: 6ef49828b5d3642db9813ecbdac785a6,
       type: 2}

@@ -9,8 +9,9 @@ public class KillPartical : MonoBehaviour
     {
         ParticleSystem particleSystem =  GetComponent<ParticleSystem>();
 
-        if (particleSystem != null && particleSystem.IsAlive())
+        if (particleSystem != null && !particleSystem.IsAlive())
         {
+            Debug.Log("Clearning Up partical system");
             ObjectUtils.cleanUpObject(gameObject);
         }
 	}

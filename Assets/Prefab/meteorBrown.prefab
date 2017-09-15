@@ -24,8 +24,8 @@ GameObject:
   - component: {fileID: 114809274734687424}
   - component: {fileID: 114848349433067226}
   - component: {fileID: 114515809715004400}
-  - component: {fileID: 114183682959658266}
   - component: {fileID: 58769046944730682}
+  - component: {fileID: 114630776255002118}
   m_Layer: 8
   m_Name: meteorBrown
   m_TagString: Meteor
@@ -81,19 +81,6 @@ CircleCollider2D:
   m_Offset: {x: -0.04061705, y: 0.048740387}
   serializedVersion: 2
   m_Radius: 0.5106426
---- !u!114 &114183682959658266
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1378833865578596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80d710550be59458886bb0301b995f2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreValue: 10
-  explosion: {fileID: 129538, guid: 25175c06f2b0c4a24af6d61c7b9b40f2, type: 2}
 --- !u!114 &114515809715004400
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -105,6 +92,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ffa1646dc4b9449f98b1d689c1aad86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114630776255002118
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1378833865578596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33894202aa0a84a3fa9ecd85d76266c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreValue: 10
+  explosion: {fileID: 129538, guid: 25175c06f2b0c4a24af6d61c7b9b40f2, type: 2}
 --- !u!114 &114809274734687424
 MonoBehaviour:
   m_ObjectHideFlags: 1

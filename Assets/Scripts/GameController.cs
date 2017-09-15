@@ -48,7 +48,10 @@ public class GameController : MonoBehaviour
 
         StartCoroutine(SpawnEnemies());
 
-        scoreGuiText.text = "Score: " + playerScore.ToString();
+        if (scoreGuiText != null)
+        {
+            scoreGuiText.text = "Score: " + playerScore.ToString();
+        }
     }
 
     public void Update()
@@ -113,7 +116,10 @@ public class GameController : MonoBehaviour
 
     private void updateScore()
     {
-        scoreGuiText.text = "Score: " + playerScore.ToString();
+        if (scoreGuiText != null)
+        {
+            scoreGuiText.text = "Score: " + playerScore.ToString();
+        }
     }
 
     private void generateEnemiesMovement(GameObject gameObj, float minSpeed, float maxSpeed)

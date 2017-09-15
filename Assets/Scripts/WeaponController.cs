@@ -11,12 +11,6 @@ public class WeaponController : MonoBehaviour
     public float delay;
     public float fireRate;
 
-	// Use this for initialization
-	void Start () 
-    {
-        InvokeRepeating("fireProjectile", delay, fireRate);
-	}
-
     void fireProjectile()
     {
         foreach ( Turret turret in Turrets)
@@ -36,11 +30,14 @@ public class WeaponController : MonoBehaviour
         }
     }
 
-    void update()
+    void OnEnable()
     {
-        if (!gameObject.activeInHierarchy)
-        {
-            CancelInvoke();
-        }
+        InvokeRepeating("fireProjectile", delay, fireRate);
+    }
+
+    void OnDisable()
+    {
+        Debug.Log("Object is now disabled");
+        CancelInvoke();
     }
 }

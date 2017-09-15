@@ -181,7 +181,7 @@ Transform:
   - {fileID: 280856743}
   - {fileID: 1535884056}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &276245623
 GameObject:
@@ -415,7 +415,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4281343464150092, guid: 68202c4b4021d4f9d9813e47e833cae6, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 68202c4b4021d4f9d9813e47e833cae6, type: 2}
@@ -563,6 +563,16 @@ Prefab:
       propertyPath: restartGuiText
       value: 
       objectReference: {fileID: 1535884057}
+    - target: {fileID: 114034561123885662, guid: b58dae99966d34f2d8d2225785390640,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114034561123885662, guid: b58dae99966d34f2d8d2225785390640,
+        type: 2}
+      propertyPath: waves.Array.data[3].enemies.Array.data[0].minSpeed
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b58dae99966d34f2d8d2225785390640, type: 2}
   m_IsPrefabParent: 0
@@ -730,5 +740,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
