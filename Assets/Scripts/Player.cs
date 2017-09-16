@@ -19,6 +19,9 @@ public class Player : MonoBehaviour
     public float speed = 2.0f;
     public float rotateSpeed = 2.0f;
 
+    [Header("Explosion Details")]
+    public GameObject explosion;
+
     private Rigidbody2D m_rigBody;
     private Vector2 m_touchStartPos;
 
@@ -49,6 +52,24 @@ public class Player : MonoBehaviour
         movement();
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Boundary" || 
+            other.gameObject.tag == gameObject.gameObject.tag ||
+            other.gameObject.tag == "Bullet")
+        {
+            return;
+        }
+
+        GameController.sharedInstance.gameOver();
+        ObjectUtils.cleanUpObject(other.gameObject);
+        ObjectUtils.cleanUpObject(gameObject);
+
+        ObjectUtils.createObject(explosion, gameObject.transform.position, gameObject.transform.rotation);
+
+        Debug.Log("Destorying " + gameObject.name + " with tag \"" + gameObject.tag + "\" by object with a tag \"" + other.gameObject.tag + "\"");
+    }
+
     private void fireBullet()
     {
         if (Time.time > m_nextfile)
@@ -66,6 +87,8 @@ public class Player : MonoBehaviour
                         bullet.transform.rotation = turret.gameObj.transform.rotation;
 
                         bullet.SetActive(true);
+
+                        GetComponent<AudioSource>().Play();
                     }
                 }
             }  
@@ -93,6 +116,5 @@ public class Player : MonoBehaviour
      
         Vector3 movement = new Vector3(moveHorizontal, moveVertical, 0.0f);
         m_rigBody.velocity = movement.normalized * speed;
-       
     }
 }

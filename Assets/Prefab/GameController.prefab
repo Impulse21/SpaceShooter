@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4451527764350250}
   - component: {fileID: 114220334552831156}
   - component: {fileID: 114034561123885662}
+  - component: {fileID: 82093038704835992}
   m_Layer: 8
   m_Name: GameController
   m_TagString: Untagged
@@ -41,6 +42,86 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &82093038704835992
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1202521700329070}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 7b04c59dd84f14039b601e1abbe7b884, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.494
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114034561123885662
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -54,108 +135,67 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delayStart: 0
   spawnInterval: 1
-  delayWave: 10
+  delayWave: 4
   waves:
   - enemies:
     - numOfEnemies: 5
       gameObject: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
         type: 2}
-      minSpeed: 2
+      minSpeed: 5
       maxSpeed: 10
       maxRotation: 20
   - enemies:
     - numOfEnemies: 6
       gameObject: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
         type: 2}
-      minSpeed: 2
+      minSpeed: 5
       maxSpeed: 10
+      maxRotation: 20
+    - numOfEnemies: 1
+      gameObject: {fileID: 1794622370154868, guid: d4d47ae55b54c495e992a173c734c87f,
+        type: 2}
+      minSpeed: 4
+      maxSpeed: 6
       maxRotation: 20
   - enemies:
     - numOfEnemies: 7
       gameObject: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
         type: 2}
-      minSpeed: 2
-      maxSpeed: 10
+      minSpeed: 7
+      maxSpeed: 20
+      maxRotation: 0
+    - numOfEnemies: 2
+      gameObject: {fileID: 1794622370154868, guid: d4d47ae55b54c495e992a173c734c87f,
+        type: 2}
+      minSpeed: 5
+      maxSpeed: 7
       maxRotation: 0
   - enemies:
     - numOfEnemies: 8
       gameObject: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
         type: 2}
-      minSpeed: 0.1
+      minSpeed: 5
       maxSpeed: 10
+      maxRotation: 0
+    - numOfEnemies: 8
+      gameObject: {fileID: 1794622370154868, guid: d4d47ae55b54c495e992a173c734c87f,
+        type: 2}
+      minSpeed: 5
+      maxSpeed: 7
       maxRotation: 0
   - enemies:
     - numOfEnemies: 10
       gameObject: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
         type: 2}
-      minSpeed: 2
+      minSpeed: 5
       maxSpeed: 10
       maxRotation: 20
-  - enemies:
-    - numOfEnemies: 10
-      gameObject: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
-        type: 2}
-      minSpeed: 2
-      maxSpeed: 10
-      maxRotation: 10
-    - numOfEnemies: 1
-      gameObject: {fileID: 1794622370154868, guid: d4d47ae55b54c495e992a173c734c87f,
-        type: 2}
-      minSpeed: 8
-      maxSpeed: 10
-      maxRotation: 0
-  - enemies:
-    - numOfEnemies: 10
-      gameObject: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
-        type: 2}
-      minSpeed: 2
-      maxSpeed: 10
-      maxRotation: 0
-    - numOfEnemies: 2
-      gameObject: {fileID: 1794622370154868, guid: d4d47ae55b54c495e992a173c734c87f,
-        type: 2}
-      minSpeed: 8
-      maxSpeed: 10
-      maxRotation: 0
-  - enemies:
-    - numOfEnemies: 10
-      gameObject: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
-        type: 2}
-      minSpeed: 2
-      maxSpeed: 10
-      maxRotation: 0
-    - numOfEnemies: 3
-      gameObject: {fileID: 1794622370154868, guid: d4d47ae55b54c495e992a173c734c87f,
-        type: 2}
-      minSpeed: 8
-      maxSpeed: 10
-      maxRotation: 0
-  - enemies:
-    - numOfEnemies: 10
-      gameObject: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
-        type: 2}
-      minSpeed: 2
-      maxSpeed: 10
-      maxRotation: 0
     - numOfEnemies: 4
       gameObject: {fileID: 1794622370154868, guid: d4d47ae55b54c495e992a173c734c87f,
         type: 2}
-      minSpeed: 8
-      maxSpeed: 10
-      maxRotation: 0
-  - enemies:
-    - numOfEnemies: 10
-      gameObject: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
-        type: 2}
-      minSpeed: 2
-      maxSpeed: 10
-      maxRotation: 0
-    - numOfEnemies: 5
-      gameObject: {fileID: 1794622370154868, guid: d4d47ae55b54c495e992a173c734c87f,
-        type: 2}
-      minSpeed: 8
-      maxSpeed: 10
-      maxRotation: 0
+      minSpeed: 5
+      maxSpeed: 6
+      maxRotation: 20
   scoreGuiText: {fileID: 0}
   gameOverGuiText: {fileID: 0}
   restartGuiText: {fileID: 0}
@@ -175,13 +215,14 @@ MonoBehaviour:
       type: 2}
     numObjectInPool: 20
     canGrow: 1
-  - objectToPool: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
+  - objectToPool: {fileID: 1144553111952280, guid: bdd7ff14e15f559429b8ee6cc44ed1f4,
       type: 2}
-    numObjectInPool: 5
-    canGrow: 0
-  - objectToPool: {fileID: 129538, guid: 25175c06f2b0c4a24af6d61c7b9b40f2, type: 2}
     numObjectInPool: 10
     canGrow: 0
+  - objectToPool: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
+      type: 2}
+    numObjectInPool: 10
+    canGrow: 1
   - objectToPool: {fileID: 1084593592743618, guid: 6ef49828b5d3642db9813ecbdac785a6,
       type: 2}
     numObjectInPool: 5
@@ -190,3 +231,11 @@ MonoBehaviour:
       type: 2}
     numObjectInPool: 5
     canGrow: 1
+  - objectToPool: {fileID: 1031743881609316, guid: 3ffd9caab419fe94090d3b51fa7a7a4f,
+      type: 2}
+    numObjectInPool: 5
+    canGrow: 1
+  - objectToPool: {fileID: 1066390231271816, guid: 0b2bea6de2b5aee49857a644d984172f,
+      type: 2}
+    numObjectInPool: 1
+    canGrow: 0

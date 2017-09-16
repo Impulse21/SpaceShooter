@@ -25,6 +25,8 @@ public class WeaponController : MonoBehaviour
                     projectile.transform.rotation = gameObject.transform.rotation;
 
                     projectile.SetActive(true);
+
+                    GetComponent<AudioSource>().Play();
                 }
             }
         }

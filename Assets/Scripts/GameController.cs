@@ -149,15 +149,33 @@ public class GameController : MonoBehaviour
         Vector3 topRight = Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth, Camera.main.pixelHeight));
         Vector3 bottomRight = Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth, 0.0f));
 
-        Vector3 spawnLocation = new Vector3(topRight.x, Random.Range(bottomRight.y, topRight.y), 0.0f);
-        GameObject enemy = ObjectPool.SharedInstance.GetPooledObject(enemyDetails.gameObject.tag);
+        Vector3 spawnLocation;
 
+        do
+        {
+            spawnLocation = new Vector3(topRight.x, Random.Range(bottomRight.y, topRight.y), 0.0f);
+        }
+        while (willCollideWithObject(spawnLocation));
+
+
+        GameObject enemy = ObjectPool.SharedInstance.GetPooledObject(enemyDetails.gameObject.tag);
         if (enemy != null)
         {
             enemy.transform.position = spawnLocation;
             enemy.SetActive(true);
-
             generateEnemiesMovement(enemy, enemyDetails.minSpeed, enemyDetails.maxSpeed);
         }
+    }
+
+    private bool willCollideWithObject(Vector3 startLocation)
+    {
+        RaycastHit2D hit = Physics2D.Raycast(startLocation, Vector3.left * 100);
+
+        if (hit.collider != null)
+        {
+            return hit.collider.tag == "Meteor";
+        }
+
+        return false;
     }
 }
