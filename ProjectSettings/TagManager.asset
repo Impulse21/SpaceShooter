@@ -9,6 +9,9 @@ TagManager:
   - Meteor
   - Enemy
   - EnemyBullet
+  - Explosion_Player
+  - Explosion_Astroid
+  - Explosion_Enemy
   layers:
   - Default
   - TransparentFX

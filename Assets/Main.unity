@@ -563,16 +563,6 @@ Prefab:
       propertyPath: restartGuiText
       value: 
       objectReference: {fileID: 1535884057}
-    - target: {fileID: 114034561123885662, guid: b58dae99966d34f2d8d2225785390640,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114034561123885662, guid: b58dae99966d34f2d8d2225785390640,
-        type: 2}
-      propertyPath: waves.Array.data[3].enemies.Array.data[0].minSpeed
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b58dae99966d34f2d8d2225785390640, type: 2}
   m_IsPrefabParent: 0
