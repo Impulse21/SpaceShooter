@@ -196,6 +196,45 @@ MonoBehaviour:
       minSpeed: 5
       maxSpeed: 6
       maxRotation: 20
+  - enemies:
+    - numOfEnemies: 10
+      gameObject: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
+        type: 2}
+      minSpeed: 5
+      maxSpeed: 10
+      maxRotation: 20
+    - numOfEnemies: 3
+      gameObject: {fileID: 1135431978971280, guid: b83c65a06e368d3459647b5ebf522e29,
+        type: 2}
+      minSpeed: 6
+      maxSpeed: 7
+      maxRotation: 20
+  - enemies:
+    - numOfEnemies: 10
+      gameObject: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
+        type: 2}
+      minSpeed: 5
+      maxSpeed: 10
+      maxRotation: 20
+    - numOfEnemies: 6
+      gameObject: {fileID: 1135431978971280, guid: b83c65a06e368d3459647b5ebf522e29,
+        type: 2}
+      minSpeed: 5
+      maxSpeed: 6
+      maxRotation: 20
+  - enemies:
+    - numOfEnemies: 3
+      gameObject: {fileID: 1135431978971280, guid: b83c65a06e368d3459647b5ebf522e29,
+        type: 2}
+      minSpeed: 5
+      maxSpeed: 6
+      maxRotation: 20
+    - numOfEnemies: 4
+      gameObject: {fileID: 1794622370154868, guid: d4d47ae55b54c495e992a173c734c87f,
+        type: 2}
+      minSpeed: 5
+      maxSpeed: 6
+      maxRotation: 20
   scoreGuiText: {fileID: 0}
   gameOverGuiText: {fileID: 0}
   restartGuiText: {fileID: 0}
@@ -239,3 +278,7 @@ MonoBehaviour:
       type: 2}
     numObjectInPool: 1
     canGrow: 0
+  - objectToPool: {fileID: 1135431978971280, guid: b83c65a06e368d3459647b5ebf522e29,
+      type: 2}
+    numObjectInPool: 5
+    canGrow: 1

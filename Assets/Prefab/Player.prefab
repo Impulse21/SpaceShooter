@@ -83,7 +83,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1020356432735984}
   m_LocalRotation: {x: -0, y: -0, z: -0.7066083, w: 0.707605}
-  m_LocalPosition: {x: -5.91, y: -0.13, z: 0}
+  m_LocalPosition: {x: -8.59, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4251441976504084}
@@ -277,6 +277,11 @@ MonoBehaviour:
     isEnabled: 1
   speed: 4
   rotateSpeed: 2
+  movementBounds:
+    yMin: -4.4
+    yMax: 4.4
+    xMin: -10.25
+    xMax: 10.25
   explosion: {fileID: 1066390231271816, guid: 0b2bea6de2b5aee49857a644d984172f, type: 2}
 --- !u!212 &212577950240543698
 SpriteRenderer:

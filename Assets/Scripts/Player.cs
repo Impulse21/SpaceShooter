@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
+public struct Boundary
+{
+    public float yMin;
+    public float yMax;
+    public float xMin;
+    public float xMax;
+}
+
+[System.Serializable]
 public struct Turret
 {
     public GameObject gameObj;
@@ -18,6 +27,7 @@ public class Player : MonoBehaviour
     [Header("Movement")]
     public float speed = 2.0f;
     public float rotateSpeed = 2.0f;
+    public Boundary movementBounds;
 
     [Header("Explosion Details")]
     public GameObject explosion;
@@ -33,8 +43,7 @@ public class Player : MonoBehaviour
         m_rigBody = GetComponent<Rigidbody2D>();
 
         m_touchStartPos = new Vector2();
-
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () 
@@ -97,24 +106,16 @@ public class Player : MonoBehaviour
        
     private void movement()
     {
-        #if UNITY_IPHONE || UNITY_ANDROID
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-        {
-        m_touchStartPos = Input.GetTouch(0).position;
-        }
-
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
-        {
-        // Get Movment of finer since last fram
-
-        Vector2 touchDeltaPos = Input.GetTouch(0).deltaPosition;
-        }
-        #else
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
-        #endif
+
      
         Vector3 movement = new Vector3(moveHorizontal, moveVertical, 0.0f);
         m_rigBody.velocity = movement.normalized * speed;
+
+        m_rigBody.position = new Vector3(
+            Mathf.Clamp(m_rigBody.position.x, movementBounds.xMin, movementBounds.xMax), 
+            Mathf.Clamp(m_rigBody.position.y, movementBounds.yMin, movementBounds.yMax)
+            );
     }
 }
