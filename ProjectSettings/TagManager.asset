@@ -12,6 +12,7 @@ TagManager:
   - Explosion_Player
   - Explosion_Astroid
   - Explosion_Enemy
+  - Enemy2
   layers:
   - Default
   - TransparentFX

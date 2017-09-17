@@ -214,9 +214,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dodge: 2
   smoothing: 0.5
-  startWait: {x: 1, y: 3}
+  startWait: {x: 0.5, y: 2}
   evadeTime: {x: 1, y: 2}
-  evadeWait: {x: 1, y: 3}
+  evadeWait: {x: 0.4, y: 2}
   movementBounds:
     yMin: -4.4
     yMax: 4.4
