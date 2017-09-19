@@ -147,6 +147,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 132342877471838558, guid: 3ebd690d80d2c47e9a3283d04b75442b,
+        type: 2}
+      propertyPath: m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: fc616d1c61e730d4493d9ceb36a82909,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3ebd690d80d2c47e9a3283d04b75442b, type: 2}
   m_IsPrefabParent: 0
@@ -471,6 +477,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 132397023744360996, guid: 26cf9ff93425b4a98a911d67eb2a7140,
+        type: 2}
+      propertyPath: m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: fc616d1c61e730d4493d9ceb36a82909,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 26cf9ff93425b4a98a911d67eb2a7140, type: 2}
   m_IsPrefabParent: 0
@@ -516,8 +528,14 @@ Prefab:
     - target: {fileID: 132466657436605966, guid: d165ec84181864ad9923b2d090ef9472,
         type: 2}
       propertyPath: m_Text
-      value: GAMEOVER
+      value: GAME OVER
       objectReference: {fileID: 0}
+    - target: {fileID: 132466657436605966, guid: d165ec84181864ad9923b2d090ef9472,
+        type: 2}
+      propertyPath: m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: fc616d1c61e730d4493d9ceb36a82909,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d165ec84181864ad9923b2d090ef9472, type: 2}
   m_IsPrefabParent: 0
