@@ -21,6 +21,7 @@ public struct Turret
 public class Player : MonoBehaviour 
 {
     [Header("Fire Details")]
+    public SimpleTouchAreaButton firePad;
     public float fireRate = 10;
     public List<Turret> StandardTurrets = new List<Turret>();
 
@@ -28,6 +29,7 @@ public class Player : MonoBehaviour
     public float speed = 2.0f;
     public float rotateSpeed = 2.0f;
     public Boundary movementBounds;
+    public SimpleTouchPad touchPad;
 
     [Header("Explosion Details")]
     public GameObject explosion;
@@ -48,8 +50,9 @@ public class Player : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-        // Temp for bug fixing
-        if (Input.GetButton("Fire1"))
+        bool canFire = Input.GetButton("Fire1");
+
+        if (canFire)
         {
             fireBullet();
         }
@@ -106,10 +109,11 @@ public class Player : MonoBehaviour
        
     private void movement()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+        //float moveHorizontal = Input.GetAxis("Horizontal");
+        //float moveVertical = Input.GetAxis("Vertical");
+        //Vector3 movement = new Vector3(moveHorizontal, moveVertical, 0.0f);
 
-        Vector3 movement = new Vector3(moveHorizontal, moveVertical, 0.0f);
+        Vector3 movement = touchPad.GetDirection();
 
         m_rigBody.velocity = movement.normalized * speed;
 
