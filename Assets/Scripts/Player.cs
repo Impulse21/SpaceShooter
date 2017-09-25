@@ -34,6 +34,9 @@ public class Player : MonoBehaviour
     [Header("Explosion Details")]
     public GameObject explosion;
 
+    [Header("Other")]
+    public GameObject shield;
+
     private Rigidbody2D m_rigBody;
     private Vector2 m_touchStartPos;
 
@@ -73,7 +76,15 @@ public class Player : MonoBehaviour
             return;
         }
 
-        GameController.sharedInstance.gameOver();
+        if (other.gameObject.tag == "PowerUp")
+        {
+            
+        }
+        else
+        {
+            GameController.sharedInstance.gameOver();
+        }
+
         ObjectUtils.cleanUpObject(other.gameObject);
         ObjectUtils.cleanUpObject(gameObject);
 
