@@ -33,8 +33,7 @@ public class GameController : MonoBehaviour
 
     [Header("UI Components")]
     public GUIText scoreGuiText;
-    public GUIText gameOverGuiText;
-    public GUIText restartGuiText;
+    public GameObject gameOverMenu;
 
     private int playerScore = 0;
     private bool bGameOver = false;
@@ -51,6 +50,11 @@ public class GameController : MonoBehaviour
         if (scoreGuiText != null)
         {
             scoreGuiText.text = "Score: " + playerScore.ToString();
+        }
+
+        if (gameOverMenu != null)
+        {
+            gameOverMenu.SetActive(false);
         }
     }
 
@@ -77,8 +81,7 @@ public class GameController : MonoBehaviour
 
             if (bGameOver)
             {
-                restartGuiText.text = "Press 'R' for Restart";
-                bRestart = true;
+                gameOverMenu.SetActive(true);
 
                 break;
             }
@@ -110,7 +113,6 @@ public class GameController : MonoBehaviour
 
     public void gameOver()
     {
-        gameOverGuiText.text = "Game Over";
         bGameOver = true;
     }
 

@@ -109,11 +109,11 @@ public class Player : MonoBehaviour
        
     private void movement()
     {
-        //float moveHorizontal = Input.GetAxis("Horizontal");
-        //float moveVertical = Input.GetAxis("Vertical");
-        //Vector3 movement = new Vector3(moveHorizontal, moveVertical, 0.0f);
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
+        Vector3 movement = new Vector3(moveHorizontal, moveVertical, 0.0f);
 
-        Vector3 movement = touchPad.GetDirection();
+        //Vector3 movement = touchPad.GetDirection();
 
         m_rigBody.velocity = movement.normalized * speed;
 
