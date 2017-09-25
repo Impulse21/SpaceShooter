@@ -13,6 +13,8 @@ TagManager:
   - Explosion_Astroid
   - Explosion_Enemy
   - Enemy2
+  - PowerUp
+  - Shield
   layers:
   - Default
   - TransparentFX
