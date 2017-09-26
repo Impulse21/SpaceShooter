@@ -8,21 +8,16 @@ public class DestroyByContact : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Boundary" || other.gameObject.tag == gameObject.gameObject.tag)
+        if (other.gameObject.tag == "Boundary" || 
+            other.gameObject.tag == gameObject.gameObject.tag ||
+            other.gameObject.tag == "Bullet" ||
+            other.gameObject.tag == "Player" ||
+            other.gameObject.tag.Contains("Enemy"))
         {
             return;
         }
 
-        if (other.gameObject.tag == "Player")
-        {
-            GameController.sharedInstance.gameOver();
-        }
-
-        ObjectUtils.cleanUpObject(other.gameObject);
         ObjectUtils.cleanUpObject(gameObject);
-     
         ObjectUtils.createObject(explosion, gameObject.transform.position, gameObject.transform.rotation);
-       
-        Debug.Log("Destorying " + gameObject.name + " with tag \"" + gameObject.tag + "\" by object with a tag \"" + other.gameObject.tag + "\""); 
     }
 }

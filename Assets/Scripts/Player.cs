@@ -35,19 +35,16 @@ public class Player : MonoBehaviour
     public GameObject explosion;
 
     [Header("Other")]
-    public GameObject shield;
+    public ShieldController sheild;
 
     private Rigidbody2D m_rigBody;
-    private Vector2 m_touchStartPos;
-
+ 
     private float m_nextfile = 0.0f;
 
 	// Use this for initialization
 	void Start () 
 	{
         m_rigBody = GetComponent<Rigidbody2D>();
-
-        m_touchStartPos = new Vector2();
     }
 	
 	// Update is called once per frame
@@ -59,6 +56,7 @@ public class Player : MonoBehaviour
         {
             fireBullet();
         }
+
 	}
 
     // Fixed update
@@ -78,19 +76,33 @@ public class Player : MonoBehaviour
 
         if (other.gameObject.tag == "PowerUp")
         {
-            
+            consumePowerUp(other.gameObject);
+            ObjectUtils.cleanUpObject(other.gameObject);
         }
         else
         {
             GameController.sharedInstance.gameOver();
+            ObjectUtils.cleanUpObject(other.gameObject);
+            ObjectUtils.cleanUpObject(gameObject);
+
+            ObjectUtils.createObject(explosion, gameObject.transform.position, gameObject.transform.rotation);
         }
-
-        ObjectUtils.cleanUpObject(other.gameObject);
-        ObjectUtils.cleanUpObject(gameObject);
-
-        ObjectUtils.createObject(explosion, gameObject.transform.position, gameObject.transform.rotation);
-
         Debug.Log("Destorying " + gameObject.name + " with tag \"" + gameObject.tag + "\" by object with a tag \"" + other.gameObject.tag + "\"");
+    }
+
+    private void consumePowerUp(GameObject gameObject)
+    {
+        PowerUpEnum powerUp = gameObject.GetComponent<PowerUpEnum>();
+
+        switch (powerUp.powerUpType)
+        {
+            case PowerUpEnum.PowerUpType.WeaponController:
+                //TODO
+                break;
+            case PowerUpEnum.PowerUpType.Shield:
+                sheild.enableSheilds();
+                break;
+        }
     }
 
     private void fireBullet()

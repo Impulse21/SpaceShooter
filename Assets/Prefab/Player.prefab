@@ -83,12 +83,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1020356432735984}
   m_LocalRotation: {x: -0, y: -0, z: -0.7066083, w: 0.707605}
-  m_LocalPosition: {x: -8.59, y: 0.1, z: 0}
+  m_LocalPosition: {x: -9.17, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4251441976504084}
   - {fileID: 4357340769856062}
   - {fileID: 4265075083093070}
+  - {fileID: 4251441976504084}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -89.91901}
@@ -103,7 +103,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4020833378897368}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4265075083093070
 Transform:
@@ -116,7 +116,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4020833378897368}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4357340769856062
 Transform:
@@ -129,7 +129,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4020833378897368}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &50386076245877174
 Rigidbody2D:
@@ -157,7 +157,7 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1020356432735984}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -267,6 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e2117ead68304c6b99f26b256f500f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firePad: {fileID: 0}
   fireRate: 0.3
   StandardTurrets:
   - gameObj: {fileID: 0}
@@ -278,11 +279,13 @@ MonoBehaviour:
   speed: 4
   rotateSpeed: 2
   movementBounds:
-    yMin: -4.4
-    yMax: 4.4
-    xMin: -10.25
-    xMax: 10.25
+    yMin: -6.6
+    yMax: 6.6
+    xMin: -9.95
+    xMax: 9.95
+  touchPad: {fileID: 0}
   explosion: {fileID: 1066390231271816, guid: 0b2bea6de2b5aee49857a644d984172f, type: 2}
+  sheild: {fileID: 0}
 --- !u!212 &212577950240543698
 SpriteRenderer:
   m_ObjectHideFlags: 1
