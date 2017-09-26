@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 114605470684248172}
   - component: {fileID: 82893878779658206}
   - component: {fileID: 114312945680606940}
+  - component: {fileID: 114767410139005324}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
@@ -252,7 +253,7 @@ MonoBehaviour:
     isEnabled: 1
   Bullet: {fileID: 1084593592743618, guid: 6ef49828b5d3642db9813ecbdac785a6, type: 2}
   delay: 0.3
-  fireRate: 0.4
+  fireRate: 0.6
 --- !u!114 &114605470684248172
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -277,6 +278,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ffa1646dc4b9449f98b1d689c1aad86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114767410139005324
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1794622370154868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ca8d489e303f44dbbdbedadf7760328, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemsToDrop:
+  - {fileID: 1819850798772316, guid: 54b440aec47430e40b49bd421ed58c67, type: 2}
+  dropChance: 50
 --- !u!212 &212861112363366946
 SpriteRenderer:
   m_ObjectHideFlags: 1

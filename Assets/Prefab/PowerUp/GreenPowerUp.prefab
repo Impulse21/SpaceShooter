@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114802579863922790}
   m_Layer: 8
   m_Name: GreenPowerUp
-  m_TagString: PowerUp
+  m_TagString: Sheild_PowerUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

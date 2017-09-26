@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 82396384585458618}
   - component: {fileID: 114871292420039722}
   - component: {fileID: 114960015504022450}
+  - component: {fileID: 114881792828483346}
   m_Layer: 8
   m_Name: Enemy_Enemy_2
   m_TagString: Enemy2
@@ -297,6 +298,21 @@ MonoBehaviour:
     yMax: 4.4
     xMin: 0
     xMax: 0
+--- !u!114 &114881792828483346
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1135431978971280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ca8d489e303f44dbbdbedadf7760328, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemsToDrop:
+  - {fileID: 1978913135142572, guid: db2ff3aed3db6934190256660aa2661e, type: 2}
+  - {fileID: 1819850798772316, guid: 54b440aec47430e40b49bd421ed58c67, type: 2}
+  dropChance: 60
 --- !u!114 &114960015504022450
 MonoBehaviour:
   m_ObjectHideFlags: 1
