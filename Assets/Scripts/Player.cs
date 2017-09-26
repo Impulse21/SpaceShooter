@@ -15,6 +15,7 @@ public struct Boundary
 public struct Turret
 {
     public GameObject gameObj;
+    public int weaponLevel;
     public bool isEnabled;
 }   
 
@@ -40,6 +41,8 @@ public class Player : MonoBehaviour
     private Rigidbody2D m_rigBody;
  
     private float m_nextfile = 0.0f;
+    private int m_weaponLevel = 1;
+    private float m_weaponUpgradeDuration;
 
 	// Use this for initialization
 	void Start () 
@@ -55,6 +58,11 @@ public class Player : MonoBehaviour
         if (canFire)
         {
             fireBullet();
+        }
+
+        if (m_weaponUpgradeDuration <= Time.time)
+        {
+            m_weaponLevel = 1;
         }
 
 	}
@@ -96,13 +104,22 @@ public class Player : MonoBehaviour
 
         switch (powerUp.powerUpType)
         {
-            case PowerUpEnum.PowerUpType.WeaponController:
-                //TODO
+            case PowerUpEnum.PowerUpType.Weapon:
+                upgradeWeapons(gameObject);
                 break;
             case PowerUpEnum.PowerUpType.Shield:
                 sheild.enableSheilds();
                 break;
         }
+    }
+
+    private void upgradeWeapons(GameObject gameObject)
+    {
+        WeaponUpgrade powerUp = gameObject.GetComponent<WeaponUpgrade>();
+
+        m_weaponLevel = powerUp.weaponLevel;
+
+        m_weaponUpgradeDuration = Time.time + powerUp.weaponUpgradeDurationInSeconds;
     }
 
     private void fireBullet()
@@ -113,7 +130,7 @@ public class Player : MonoBehaviour
 
             foreach (var turret in StandardTurrets)
             {
-                if (turret.isEnabled)
+                if (turret.weaponLevel == m_weaponLevel)
                 {
                     GameObject bullet = ObjectPool.SharedInstance.GetPooledObject("Bullet");
                     if (bullet != null)

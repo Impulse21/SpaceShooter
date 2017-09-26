@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114763819116875816}
   - component: {fileID: 50044709618523522}
   - component: {fileID: 114639099208233722}
+  - component: {fileID: 114234836733859242}
   m_Layer: 8
   m_Name: Bullet_Green
   m_TagString: EnemyBullet
@@ -89,6 +90,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.09, y: 0.37}
   m_EdgeRadius: 0
+--- !u!114 &114234836733859242
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1084593592743618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80d710550be59458886bb0301b995f2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 1031743881609316, guid: 3ffd9caab419fe94090d3b51fa7a7a4f, type: 2}
 --- !u!114 &114639099208233722
 MonoBehaviour:
   m_ObjectHideFlags: 1

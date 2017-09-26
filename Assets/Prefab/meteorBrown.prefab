@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114809274734687424}
   - component: {fileID: 114515809715004400}
   - component: {fileID: 58769046944730682}
+  - component: {fileID: 114043439965549720}
   - component: {fileID: 114630776255002118}
   m_Layer: 8
   m_Name: meteorBrown
@@ -80,6 +81,18 @@ CircleCollider2D:
   m_Offset: {x: -0.04061705, y: 0.048740387}
   serializedVersion: 2
   m_Radius: 0.5106426
+--- !u!114 &114043439965549720
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1378833865578596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80d710550be59458886bb0301b995f2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 1144553111952280, guid: bdd7ff14e15f559429b8ee6cc44ed1f4, type: 2}
 --- !u!114 &114515809715004400
 MonoBehaviour:
   m_ObjectHideFlags: 1

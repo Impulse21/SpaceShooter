@@ -5,7 +5,7 @@ using UnityEngine;
 public class PowerUpEnum : MonoBehaviour 
 {
 
-    public enum PowerUpType { Shield, WeaponController};
+    public enum PowerUpType { Shield, Weapon};
 
     public PowerUpType powerUpType;
 }

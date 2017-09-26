@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 114001548806269116}
   - component: {fileID: 82396384585458618}
   - component: {fileID: 114871292420039722}
+  - component: {fileID: 114960015504022450}
   m_Layer: 8
   m_Name: Enemy_Enemy_2
   m_TagString: Enemy2
@@ -267,8 +268,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Turrets:
   - gameObj: {fileID: 1120930302327114}
+    weaponLevel: 0
     isEnabled: 1
   - gameObj: {fileID: 1420555102294024}
+    weaponLevel: 0
     isEnabled: 1
   Bullet: {fileID: 1084593592743618, guid: 6ef49828b5d3642db9813ecbdac785a6, type: 2}
   delay: 0.8
@@ -294,6 +297,18 @@ MonoBehaviour:
     yMax: 4.4
     xMin: 0
     xMax: 0
+--- !u!114 &114960015504022450
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1135431978971280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80d710550be59458886bb0301b995f2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 1031743881609316, guid: 3ffd9caab419fe94090d3b51fa7a7a4f, type: 2}
 --- !u!212 &212417448523962402
 SpriteRenderer:
   m_ObjectHideFlags: 1
