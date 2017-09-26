@@ -60,6 +60,11 @@ public class GameController : MonoBehaviour
 
     public void Update()
     {
+        if (bGameOver)
+        {
+            gameOverMenu.SetActive(true);
+        }
+
         if (bRestart)
         {
             if (Input.GetKeyDown(KeyCode.R))
@@ -81,8 +86,6 @@ public class GameController : MonoBehaviour
 
             if (bGameOver)
             {
-                gameOverMenu.SetActive(true);
-
                 break;
             }
         }

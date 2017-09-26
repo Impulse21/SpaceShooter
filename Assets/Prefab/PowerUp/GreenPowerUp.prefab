@@ -21,9 +21,10 @@ GameObject:
   - component: {fileID: 4708363201287950}
   - component: {fileID: 212928784102609826}
   - component: {fileID: 58738758109601140}
+  - component: {fileID: 114802579863922790}
   m_Layer: 8
   m_Name: GreenPowerUp
-  m_TagString: Sheild_PowerUp
+  m_TagString: PowerUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56,6 +57,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.10999999
+--- !u!114 &114802579863922790
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1978913135142572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aa7f4f8dc4d949f49fcc2dca41581c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUpType: 0
 --- !u!212 &212928784102609826
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -82,7 +82,7 @@ public class Player : MonoBehaviour
             return;
         }
 
-        if (other.gameObject.tag == "PowerUp")
+        if (other.gameObject.tag.Contains("PowerUp"))
         {
             consumePowerUp(other.gameObject);
             ObjectUtils.cleanUpObject(other.gameObject);

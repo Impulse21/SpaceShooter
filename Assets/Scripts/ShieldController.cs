@@ -38,7 +38,7 @@ public class ShieldController : MonoBehaviour
         if (other.gameObject.tag == "Boundary" ||
             other.gameObject.tag == gameObject.gameObject.tag ||
             other.gameObject.tag == "Bullet" ||
-            other.gameObject.tag == "PowerUp")
+            other.gameObject.tag.Contains("PowerUp"))
         {
             return;
         }

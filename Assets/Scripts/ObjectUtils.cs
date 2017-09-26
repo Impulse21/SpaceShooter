@@ -22,6 +22,13 @@ public class ObjectUtils : MonoBehaviour
 
     public static void cleanUpObject(GameObject gameObj)
     {
+        DropItem dropItem = gameObj.GetComponent<DropItem>();
+
+        if (dropItem != null)
+        {
+            dropItem.dropItem();
+        }
+
         if (ObjectPool.SharedInstance.containsTag(gameObj.tag))
         {
             gameObj.SetActive(false);
