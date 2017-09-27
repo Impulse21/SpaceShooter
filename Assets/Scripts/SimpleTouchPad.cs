@@ -13,7 +13,7 @@ public class SimpleTouchPad : MonoBehaviour, IPointerDownHandler, IDragHandler, 
     private bool m_touched;
     private int m_pointerID;
 
-    void Awake()
+    void Start()
     {
         m_direction = new Vector2();
         m_smotthDirection = new Vector2();
@@ -24,6 +24,7 @@ public class SimpleTouchPad : MonoBehaviour, IPointerDownHandler, IDragHandler, 
     {
         if (eventData.pointerId == m_pointerID)
         {
+            Debug.Log("Touch Event -> Drag event");
             // Get difference between start point and our current point position
             Vector2 currentPosition = eventData.position;
             Vector2 directionRaw = currentPosition - m_origin;
@@ -35,6 +36,7 @@ public class SimpleTouchPad : MonoBehaviour, IPointerDownHandler, IDragHandler, 
     {
         if (!m_touched)
         {
+            Debug.Log("Touch Event -> Touched");
             m_touched = true;
             m_origin = eventData.position;
             m_pointerID = eventData.pointerId;

@@ -39,7 +39,6 @@ public class WeaponController : MonoBehaviour
 
     void OnDisable()
     {
-        Debug.Log("Object is now disabled");
         CancelInvoke();
     }
 }
