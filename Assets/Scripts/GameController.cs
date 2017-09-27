@@ -30,6 +30,7 @@ public class GameController : MonoBehaviour
     public int spawnInterval;
     public int delayWave;
     public List<WaveDetails> waves;
+    public int spawnLocationBuffer = 1;
 
     [Header("UI Components")]
     public GUIText scoreGuiText;
@@ -158,7 +159,7 @@ public class GameController : MonoBehaviour
 
         do
         {
-            spawnLocation = new Vector3(topRight.x, Random.Range(bottomRight.y, topRight.y), 0.0f);
+            spawnLocation = new Vector3(topRight.x, Random.Range(bottomRight.y + spawnLocationBuffer, topRight.y - spawnLocationBuffer), 0.0f);
         }
         while (willCollideWithObject(spawnLocation));
 

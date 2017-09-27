@@ -279,11 +279,12 @@ MonoBehaviour:
   - gameObj: {fileID: 1773237132243256}
     weaponLevel: 2
     isEnabled: 1
+  autoFire: 1
   speed: 4
   rotateSpeed: 2
   movementBounds:
-    yMin: -6.6
-    yMax: 6.6
+    yMin: -3.49
+    yMax: 3.49
     xMin: -9.95
     xMax: 9.95
   touchPad: {fileID: 0}

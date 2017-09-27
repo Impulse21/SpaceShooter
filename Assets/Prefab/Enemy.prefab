@@ -291,7 +291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsToDrop:
   - {fileID: 1819850798772316, guid: 54b440aec47430e40b49bd421ed58c67, type: 2}
-  dropChance: 50
+  dropChance: 30
 --- !u!212 &212861112363366946
 SpriteRenderer:
   m_ObjectHideFlags: 1

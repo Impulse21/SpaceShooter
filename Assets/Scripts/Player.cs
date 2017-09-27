@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     public SimpleTouchAreaButton firePad;
     public float fireRate = 10;
     public List<Turret> StandardTurrets = new List<Turret>();
+    public bool autoFire;
 
     [Header("Movement")]
     public float speed = 2.0f;
@@ -53,7 +54,7 @@ public class Player : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-        bool canFire = Input.GetButton("Fire1");
+        bool canFire = (autoFire || Input.GetButton("Fire1"));
 
         if (canFire)
         {
