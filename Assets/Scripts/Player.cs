@@ -30,7 +30,6 @@ public class Player : MonoBehaviour
     [Header("Movement")]
     public float speed = 2.0f;
     public float rotateSpeed = 2.0f;
-    public Boundary movementBounds;
     public SimpleTouchPad touchPad;
 
     [Header("Explosion Details")]
@@ -44,11 +43,13 @@ public class Player : MonoBehaviour
     private float m_nextfile = 0.0f;
     private int m_weaponLevel = 1;
     private float m_weaponUpgradeDuration;
+    public Boundary m_movementBounds;
 
-	// Use this for initialization
-	void Start () 
+    // Use this for initialization
+    void Start () 
 	{
         m_rigBody = GetComponent<Rigidbody2D>();
+        initPlayerBoundary();
     }
 	
 	// Update is called once per frame
@@ -150,18 +151,42 @@ public class Player : MonoBehaviour
        
     private void movement()
     {
+//#if UNITY_ANDROID || UNITY_IPHONE
+        Vector3 movement = touchPad.GetDirection();
         /*
+#else
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
-        Vector3 movement = new Vector3(moveHorizontal, moveVertical, 0.0f);
-        */
-        Vector3 movement = touchPad.GetDirection();
 
+        Vector3 movement = new Vector3(moveHorizontal, moveVertical, 0.0f);
+#endif
+*/
         m_rigBody.velocity = movement.normalized * speed;
 
         m_rigBody.position = new Vector3(
-            Mathf.Clamp(m_rigBody.position.x, movementBounds.xMin, movementBounds.xMax), 
-            Mathf.Clamp(m_rigBody.position.y, movementBounds.yMin, movementBounds.yMax)
+            Mathf.Clamp(m_rigBody.position.x, m_movementBounds.xMin, m_movementBounds.xMax), 
+            Mathf.Clamp(m_rigBody.position.y, m_movementBounds.yMin, m_movementBounds.yMax)
             );
+    }
+
+    private void initPlayerBoundary()
+    {
+        Vector3 topRight = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height));
+        Renderer renderer = GetComponent<Renderer>();
+        Vector2 halfSize = new Vector2(renderer.bounds.size.x / 2, renderer.bounds.size.y / 2);
+
+        Debug.Log(topRight);
+        m_movementBounds.xMax = topRight.x - halfSize.x;
+        Debug.Log(m_movementBounds.xMax);
+
+        m_movementBounds.xMin = -topRight.x + halfSize.x;
+        Debug.Log(m_movementBounds.xMin);
+
+        m_movementBounds.yMax = topRight.y - halfSize.y;
+        Debug.Log(m_movementBounds.yMax);
+
+        m_movementBounds.yMin = -topRight.y + halfSize.y;
+        Debug.Log(m_movementBounds.yMin);
+
     }
 }

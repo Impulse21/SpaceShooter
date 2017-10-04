@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 [System.Serializable]
 public struct EnemyDetails
@@ -33,7 +34,7 @@ public class GameController : MonoBehaviour
     public int spawnLocationBuffer = 1;
 
     [Header("UI Components")]
-    public GUIText scoreGuiText;
+    public Text scoreGuiText;
     public GameObject gameOverMenu;
 
     private int playerScore = 0;
