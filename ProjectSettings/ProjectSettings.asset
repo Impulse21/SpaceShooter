@@ -218,8 +218,8 @@ PlayerSettings:
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: M:/C.DiPaolo/Development/Android.keystore
-  AndroidKeyaliasName: 
+  AndroidKeystoreName: M:/C.DiPaolo/Development/Game Projects/Unity/user.keystore
+  AndroidKeyaliasName: spaceshooter
   AndroidTVCompatibility: 1
   AndroidIsGame: 1
   androidEnableBanner: 1
