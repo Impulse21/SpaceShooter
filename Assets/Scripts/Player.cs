@@ -151,16 +151,15 @@ public class Player : MonoBehaviour
        
     private void movement()
     {
-//#if UNITY_ANDROID || UNITY_IPHONE
+#if UNITY_ANDROID || UNITY_IPHONE
         Vector3 movement = touchPad.GetDirection();
-        /*
 #else
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
         Vector3 movement = new Vector3(moveHorizontal, moveVertical, 0.0f);
 #endif
-*/
+
         m_rigBody.velocity = movement.normalized * speed;
 
         m_rigBody.position = new Vector3(
