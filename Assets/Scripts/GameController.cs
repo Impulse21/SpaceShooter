@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -7,19 +8,13 @@ using UnityEngine.UI;
 [System.Serializable]
 public struct EnemyDetails
 {
-    public int numOfEnemies;
-    public GameObject gameObject;
-
-    public float minSpeed;
-    public float maxSpeed;
-
-    public float maxRotation;
+    public int level;
+    public GameObject gameObject;    
 }
 
-[System.Serializable]
-public struct WaveDetails
+private struct WaveDetails
 {
-    public List<EnemyDetails> enemies;
+
 }
 
 public class GameController : MonoBehaviour 
@@ -30,14 +25,18 @@ public class GameController : MonoBehaviour
     public int delayStart;
     public int spawnInterval;
     public int delayWave;
-    public List<WaveDetails> waves;
+    public int wavesPerLevel;
+    public List<EnemyDetails> enemyDetails;
     public int spawnLocationBuffer = 1;
 
     [Header("UI Components")]
     public Text scoreGuiText;
     public GameObject gameOverMenu;
 
-    private int playerScore = 0;
+    private Dictionary<int, List<GameObject>> m_enemyMaps;
+    private int m_playerScore = 0;
+    private int m_numOfPassedWaves = 0;
+    private int m_level;
     private bool bGameOver = false;
     private bool bRestart = false;
 
@@ -51,7 +50,7 @@ public class GameController : MonoBehaviour
 
         if (scoreGuiText != null)
         {
-            scoreGuiText.text = "Score: " + playerScore.ToString();
+            scoreGuiText.text = "Score: " + m_playerScore.ToString();
         }
 
         if (gameOverMenu != null)
@@ -90,6 +89,17 @@ public class GameController : MonoBehaviour
             {
                 break;
             }
+
+            // Inc number of passed waves!
+            if(m_numOfPassedWaves < m_level)
+            {
+                m_numOfPassedWaves++;
+            }
+            else
+            {
+                m_numOfPassedWaves = 0;
+                m_level++;
+            }
         }
     }
 
@@ -111,7 +121,7 @@ public class GameController : MonoBehaviour
         
     public void addScore(int incScore)
     {
-        playerScore += incScore;
+        m_playerScore += incScore;
 
         updateScore();
     }
@@ -125,7 +135,7 @@ public class GameController : MonoBehaviour
     {
         if (scoreGuiText != null)
         {
-            scoreGuiText.text = "Score: " + playerScore.ToString();
+            scoreGuiText.text = "Score: " + m_playerScore.ToString();
         }
     }
 
@@ -184,5 +194,18 @@ public class GameController : MonoBehaviour
         }
 
         return false;
+    }
+
+    private void initEnemyLevelMap()
+    {
+        foreach (var enemy in enemyDetails)
+        {
+            if (!m_enemyMaps.ContainsKey(enemy.level))
+            {
+                m_enemyMaps.Add(enemy.level, new List<GameObject>());
+            }
+
+            m_enemyMaps[enemy.level].Add(enemy.gameObject);
+        }
     }
 }
