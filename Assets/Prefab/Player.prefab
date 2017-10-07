@@ -83,7 +83,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1020356432735984}
   m_LocalRotation: {x: -0, y: -0, z: -0.7066083, w: 0.707605}
-  m_LocalPosition: {x: -9.17, y: 0.1, z: 0}
+  m_LocalPosition: {x: -7.03, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4357340769856062}
@@ -268,7 +268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePad: {fileID: 0}
-  fireRate: 0.3
+  fireRate: 0.6
   StandardTurrets:
   - gameObj: {fileID: 1180967605154378}
     weaponLevel: 2
@@ -282,11 +282,6 @@ MonoBehaviour:
   autoFire: 1
   speed: 4
   rotateSpeed: 2
-  movementBounds:
-    yMin: -3.49
-    yMax: 3.49
-    xMin: -9.95
-    xMax: 9.95
   touchPad: {fileID: 0}
   explosion: {fileID: 1066390231271816, guid: 0b2bea6de2b5aee49857a644d984172f, type: 2}
   sheild: {fileID: 0}

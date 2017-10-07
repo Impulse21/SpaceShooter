@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
     private float m_nextfile = 0.0f;
     private int m_weaponLevel = 1;
     private float m_weaponUpgradeDuration;
-    public Boundary m_movementBounds;
+    private Boundary m_movementBounds;
 
     // Use this for initialization
     void Start () 

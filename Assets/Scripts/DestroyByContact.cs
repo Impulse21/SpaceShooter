@@ -12,7 +12,8 @@ public class DestroyByContact : MonoBehaviour
             other.gameObject.tag == gameObject.gameObject.tag ||
             other.gameObject.tag == "Bullet" ||
             other.gameObject.tag == "Player" ||
-            other.gameObject.tag.Contains("Enemy") ||
+            other.gameObject.tag == "Enemy" ||
+            other.gameObject.tag == "Enemy2" ||
             other.gameObject.tag.Contains("PowerUp"))
         {
             return;
