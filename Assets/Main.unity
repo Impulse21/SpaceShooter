@@ -386,6 +386,11 @@ Prefab:
       propertyPath: sheild
       value: 
       objectReference: {fileID: 812387136}
+    - target: {fileID: 61730309722410924, guid: a7dc1fea2e4b043288429822092fc689,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a7dc1fea2e4b043288429822092fc689, type: 2}
   m_IsPrefabParent: 0
@@ -426,7 +431,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4911251130290510, guid: dc29dccaada070d42976fa0ee6e342ef, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4881672456954868, guid: dc29dccaada070d42976fa0ee6e342ef, type: 2}
       propertyPath: m_LocalPosition.x
@@ -917,10 +922,10 @@ RectTransform:
   m_Father: {fileID: 1833649334}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 542.25}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 77, y: 49}
+  m_SizeDelta: {x: 7, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &844378770
 MonoBehaviour:
@@ -934,14 +939,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 3ecbe1aa40d3ce3428b40e1f53a6c5f8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -966,7 +971,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46288199714414548b027e15e92dcffe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoothing: 0.1
+  smoothing: 0.4
 --- !u!1 &958799129 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1189640940228056, guid: dc29dccaada070d42976fa0ee6e342ef,
@@ -1797,5 +1802,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -69,7 +69,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a12d298e915434f87876300f3587452c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponLevel: 1
+  weaponLevel: 2
+  weaponFireRateModifier: 2
   weaponUpgradeDurationInSeconds: 5
 --- !u!114 &114903614326186542
 MonoBehaviour:

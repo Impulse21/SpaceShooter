@@ -11,10 +11,6 @@ public class DestroyByPlayerBullet : MonoBehaviour
     {
         if (other.gameObject.tag == "Bullet")
         {
-            if (gameObject.tag == "Enemy")
-            {
-                string test = "";
-            }
             ObjectUtils.cleanUpObject(other.gameObject);
             ObjectUtils.cleanUpObject(gameObject);
 
@@ -25,5 +21,4 @@ public class DestroyByPlayerBullet : MonoBehaviour
             Debug.Log("Destorying " + gameObject.name + " with tag \"" + gameObject.tag + "\" by object with a tag \"" + other.gameObject.tag + "\""); 
         }
     }
-
 }

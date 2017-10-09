@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -7,19 +8,10 @@ using UnityEngine.UI;
 [System.Serializable]
 public struct EnemyDetails
 {
-    public int numOfEnemies;
-    public GameObject gameObject;
-
-    public float minSpeed;
-    public float maxSpeed;
-
-    public float maxRotation;
-}
-
-[System.Serializable]
-public struct WaveDetails
-{
-    public List<EnemyDetails> enemies;
+    public int level;
+    public Vector2 initSpeed;
+    public int initNumOfObjects;
+    public GameObject gameObject;    
 }
 
 public class GameController : MonoBehaviour 
@@ -30,14 +22,18 @@ public class GameController : MonoBehaviour
     public int delayStart;
     public int spawnInterval;
     public int delayWave;
-    public List<WaveDetails> waves;
+    public int wavesPerLevel;
+    public List<EnemyDetails> enemyDetails;
     public int spawnLocationBuffer = 1;
 
     [Header("UI Components")]
     public Text scoreGuiText;
     public GameObject gameOverMenu;
 
-    private int playerScore = 0;
+    private Dictionary<int, List<EnemyDetails>> m_enemyMaps;
+    private int m_playerScore = 0;
+    private int m_numOfPassedWaves = 0;
+    private int m_level = 1;
     private bool bGameOver = false;
     private bool bRestart = false;
 
@@ -47,11 +43,13 @@ public class GameController : MonoBehaviour
 
         Random.InitState( (int) System.DateTime.Now.Ticks);
 
+        initEnemyLevelMap();
+
         StartCoroutine(SpawnEnemies());
 
         if (scoreGuiText != null)
         {
-            scoreGuiText.text = "Score: " + playerScore.ToString();
+            scoreGuiText.text = "Score: " + m_playerScore.ToString();
         }
 
         if (gameOverMenu != null)
@@ -80,9 +78,12 @@ public class GameController : MonoBehaviour
     {
         yield return new WaitForSeconds(delayStart);
 
+        List<EnemyDetails> waveDetails = getLevelEnemyDetials(m_level);
+
         while (true)
         {
-            yield return spawnEnemies();
+            randomizeEnemyCharacteristics(waveDetails, m_numOfPassedWaves, m_level);
+            yield return spawnEnemies(waveDetails);
 
             yield return new WaitForSeconds(delayWave);
 
@@ -90,17 +91,28 @@ public class GameController : MonoBehaviour
             {
                 break;
             }
+
+            // Inc number of passed waves!
+            if(m_numOfPassedWaves < m_level)
+            {
+                m_numOfPassedWaves++;
+            }
+            else
+            {
+                m_numOfPassedWaves = 0;
+                m_level++;
+                waveDetails = getLevelEnemyDetials(m_level);
+            }
         }
     }
 
     // Coroutine to spawn elements
-    IEnumerator spawnEnemies()
+    IEnumerator spawnEnemies(List<EnemyDetails> waveDetails)
     {
-        WaveDetails waveDetail = getWave();
 
-        foreach (EnemyDetails enemy in waveDetail.enemies)
+        foreach (EnemyDetails enemy in waveDetails)
         {
-            for (int i = 0; i < enemy.numOfEnemies; i++)
+            for (int i = 0; i < enemy.initNumOfObjects; i++)
             {
                 spawnObject(enemy);
 
@@ -108,10 +120,10 @@ public class GameController : MonoBehaviour
             }
         }
     }
-        
+       
     public void addScore(int incScore)
     {
-        playerScore += incScore;
+        m_playerScore += incScore;
 
         updateScore();
     }
@@ -121,11 +133,26 @@ public class GameController : MonoBehaviour
         bGameOver = true;
     }
 
+    private List<EnemyDetails> getLevelEnemyDetials(int level)
+    {
+        return m_enemyMaps.Where(pair => (pair.Key <= level)).Select(pair => pair.Value).SelectMany(e => e).ToList();
+    }
+
+    private void randomizeEnemyCharacteristics(List<EnemyDetails> enemies, int wave, int level)
+    {
+        for(int iEnemy = 0; iEnemy < enemies.Count; iEnemy++)
+        {
+            EnemyDetails enemyDetail = enemies[iEnemy];
+            enemyDetail.initSpeed = new Vector2(Mathf.Exp(enemyDetail.initSpeed.x * level), Mathf.Exp(enemyDetail.initSpeed.y * level));
+            enemyDetail.initNumOfObjects = Mathf.RoundToInt(enemies[iEnemy].initNumOfObjects * (level / 2) * (wave / 2));
+        }
+    }
+
     private void updateScore()
     {
         if (scoreGuiText != null)
         {
-            scoreGuiText.text = "Score: " + playerScore.ToString();
+            scoreGuiText.text = "Score: " + m_playerScore.ToString();
         }
     }
 
@@ -142,13 +169,6 @@ public class GameController : MonoBehaviour
         {
             Debug.Log("Unable to get Enemies Rigid Body 2D");
         } 
-    }
-
-    private WaveDetails getWave()
-    {
-        int waveIndex = Random.Range(0, waves.Count);
-
-        return waves[waveIndex];
     }
 
     private void spawnObject(EnemyDetails enemyDetails)
@@ -170,7 +190,7 @@ public class GameController : MonoBehaviour
         {
             enemy.transform.position = spawnLocation;
             enemy.SetActive(true);
-            generateEnemiesMovement(enemy, enemyDetails.minSpeed, enemyDetails.maxSpeed);
+            generateEnemiesMovement(enemy, enemyDetails.initSpeed.x, enemyDetails.initSpeed.y);
         }
     }
 
@@ -184,5 +204,19 @@ public class GameController : MonoBehaviour
         }
 
         return false;
+    }
+
+    private void initEnemyLevelMap()
+    {
+        m_enemyMaps = new Dictionary<int, List<EnemyDetails>>();
+        foreach (var enemy in enemyDetails)
+        {
+            if (!m_enemyMaps.ContainsKey(enemy.level))
+            {
+                m_enemyMaps.Add(enemy.level, new List<EnemyDetails>());
+            }
+
+            m_enemyMaps[enemy.level].Add(enemy);
+        }
     }
 }

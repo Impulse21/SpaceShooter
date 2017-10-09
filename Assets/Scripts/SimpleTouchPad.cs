@@ -24,7 +24,6 @@ public class SimpleTouchPad : MonoBehaviour, IPointerDownHandler, IDragHandler, 
     {
         if (eventData.pointerId == m_pointerID)
         {
-            Debug.Log("Touch Event -> Drag event");
             // Get difference between start point and our current point position
             Vector2 currentPosition = eventData.position;
             Vector2 directionRaw = currentPosition - m_origin;
