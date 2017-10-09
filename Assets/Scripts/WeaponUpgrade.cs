@@ -5,7 +5,6 @@ using UnityEngine;
 public class WeaponUpgrade : MonoBehaviour 
 {
     public int weaponLevel;
-
-
+    public int weaponFireRateModifier;
     public int weaponUpgradeDurationInSeconds;
 }

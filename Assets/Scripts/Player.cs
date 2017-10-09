@@ -39,8 +39,11 @@ public class Player : MonoBehaviour
     public ShieldController sheild;
 
     private Rigidbody2D m_rigBody;
- 
-    private float m_nextfile = 0.0f;
+
+    bool bWeaponUpgradeActive = false;
+    private float m_modifiedFireRate;
+
+    private float m_nextFire = 0.0f;
     private int m_weaponLevel = 1;
     private float m_weaponUpgradeDuration;
     private Boundary m_movementBounds;
@@ -49,6 +52,7 @@ public class Player : MonoBehaviour
     void Start () 
 	{
         m_rigBody = GetComponent<Rigidbody2D>();
+        m_modifiedFireRate = fireRate;
         initPlayerBoundary();
     }
 	
@@ -62,9 +66,9 @@ public class Player : MonoBehaviour
             fireBullet();
         }
 
-        if (m_weaponUpgradeDuration <= Time.time)
+        if (bWeaponUpgradeActive && m_weaponUpgradeDuration <= Time.time)
         {
-            m_weaponLevel = 1;
+            resetWeaponlevel();
         }
 
 	}
@@ -120,15 +124,17 @@ public class Player : MonoBehaviour
         WeaponUpgrade powerUp = gameObject.GetComponent<WeaponUpgrade>();
 
         m_weaponLevel = powerUp.weaponLevel;
+        m_modifiedFireRate = fireRate / powerUp.weaponFireRateModifier;
 
+        bWeaponUpgradeActive = true;
         m_weaponUpgradeDuration = Time.time + powerUp.weaponUpgradeDurationInSeconds;
     }
 
     private void fireBullet()
     {
-        if (Time.time > m_nextfile)
+        if (Time.time > m_nextFire)
         {
-            m_nextfile = Time.time + fireRate;
+            m_nextFire = Time.time + m_modifiedFireRate;
 
             foreach (var turret in StandardTurrets)
             {
@@ -173,19 +179,17 @@ public class Player : MonoBehaviour
         Vector3 topRight = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height));
         Renderer renderer = GetComponent<Renderer>();
         Vector2 halfSize = new Vector2(renderer.bounds.size.x / 2, renderer.bounds.size.y / 2);
-
-        Debug.Log(topRight);
+        
         m_movementBounds.xMax = topRight.x - halfSize.x;
         Debug.Log(m_movementBounds.xMax);
-
         m_movementBounds.xMin = -topRight.x + halfSize.x;
-        Debug.Log(m_movementBounds.xMin);
-
         m_movementBounds.yMax = topRight.y - halfSize.y;
-        Debug.Log(m_movementBounds.yMax);
-
         m_movementBounds.yMin = -topRight.y + halfSize.y;
-        Debug.Log(m_movementBounds.yMin);
+    }
 
+    private void resetWeaponlevel()
+    {
+        m_weaponLevel = 1;
+        m_modifiedFireRate = fireRate;
     }
 }

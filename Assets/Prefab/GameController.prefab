@@ -133,108 +133,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9ee189ad00ce406cb19b393badbeaf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayStart: 0
+  delayStart: 1
   spawnInterval: 1
-  delayWave: 4
-  waves:
-  - enemies:
-    - numOfEnemies: 5
-      gameObject: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
-        type: 2}
-      minSpeed: 5
-      maxSpeed: 10
-      maxRotation: 20
-  - enemies:
-    - numOfEnemies: 6
-      gameObject: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
-        type: 2}
-      minSpeed: 5
-      maxSpeed: 10
-      maxRotation: 20
-    - numOfEnemies: 1
-      gameObject: {fileID: 1794622370154868, guid: d4d47ae55b54c495e992a173c734c87f,
-        type: 2}
-      minSpeed: 6
-      maxSpeed: 7
-      maxRotation: 20
-  - enemies:
-    - numOfEnemies: 7
-      gameObject: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
-        type: 2}
-      minSpeed: 7
-      maxSpeed: 20
-      maxRotation: 0
-    - numOfEnemies: 2
-      gameObject: {fileID: 1794622370154868, guid: d4d47ae55b54c495e992a173c734c87f,
-        type: 2}
-      minSpeed: 6
-      maxSpeed: 7
-      maxRotation: 0
-  - enemies:
-    - numOfEnemies: 8
-      gameObject: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
-        type: 2}
-      minSpeed: 5
-      maxSpeed: 10
-      maxRotation: 0
-    - numOfEnemies: 3
-      gameObject: {fileID: 1794622370154868, guid: d4d47ae55b54c495e992a173c734c87f,
-        type: 2}
-      minSpeed: 5
-      maxSpeed: 7
-      maxRotation: 0
-  - enemies:
-    - numOfEnemies: 10
-      gameObject: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
-        type: 2}
-      minSpeed: 5
-      maxSpeed: 10
-      maxRotation: 20
-    - numOfEnemies: 4
-      gameObject: {fileID: 1794622370154868, guid: d4d47ae55b54c495e992a173c734c87f,
-        type: 2}
-      minSpeed: 5
-      maxSpeed: 6
-      maxRotation: 20
-  - enemies:
-    - numOfEnemies: 10
-      gameObject: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
-        type: 2}
-      minSpeed: 5
-      maxSpeed: 10
-      maxRotation: 20
-    - numOfEnemies: 3
-      gameObject: {fileID: 1135431978971280, guid: b83c65a06e368d3459647b5ebf522e29,
-        type: 2}
-      minSpeed: 6
-      maxSpeed: 7
-      maxRotation: 20
-  - enemies:
-    - numOfEnemies: 10
-      gameObject: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
-        type: 2}
-      minSpeed: 5
-      maxSpeed: 10
-      maxRotation: 20
-    - numOfEnemies: 2
-      gameObject: {fileID: 1135431978971280, guid: b83c65a06e368d3459647b5ebf522e29,
-        type: 2}
-      minSpeed: 7
-      maxSpeed: 8
-      maxRotation: 20
-  - enemies:
-    - numOfEnemies: 3
-      gameObject: {fileID: 1135431978971280, guid: b83c65a06e368d3459647b5ebf522e29,
-        type: 2}
-      minSpeed: 7
-      maxSpeed: 8
-      maxRotation: 20
-    - numOfEnemies: 3
-      gameObject: {fileID: 1794622370154868, guid: d4d47ae55b54c495e992a173c734c87f,
-        type: 2}
-      minSpeed: 6
-      maxSpeed: 7
-      maxRotation: 20
+  delayWave: 3
+  wavesPerLevel: 4
+  enemyDetails:
+  - level: 1
+    initSpeed: {x: 3, y: 5}
+    initNumOfObjects: 4
+    gameObject: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
+      type: 2}
+  - level: 2
+    initSpeed: {x: 6, y: 7}
+    initNumOfObjects: 3
+    gameObject: {fileID: 1794622370154868, guid: d4d47ae55b54c495e992a173c734c87f,
+      type: 2}
+  - level: 3
+    initSpeed: {x: 6, y: 7}
+    initNumOfObjects: 3
+    gameObject: {fileID: 1135431978971280, guid: b83c65a06e368d3459647b5ebf522e29,
+      type: 2}
+  spawnLocationBuffer: 1
   scoreGuiText: {fileID: 0}
   gameOverMenu: {fileID: 0}
 --- !u!114 &114220334552831156
@@ -253,39 +172,39 @@ MonoBehaviour:
       type: 2}
     numObjectInPool: 20
     canGrow: 1
-  - objectToPool: {fileID: 1144553111952280, guid: bdd7ff14e15f559429b8ee6cc44ed1f4,
+  - objectToPool: {fileID: 1084593592743618, guid: 6ef49828b5d3642db9813ecbdac785a6,
       type: 2}
-    numObjectInPool: 10
-    canGrow: 0
+    numObjectInPool: 20
+    canGrow: 1
   - objectToPool: {fileID: 1378833865578596, guid: e0ed8be37192844d9b2467ab4d7f64f1,
       type: 2}
     numObjectInPool: 10
-    canGrow: 1
-  - objectToPool: {fileID: 1084593592743618, guid: 6ef49828b5d3642db9813ecbdac785a6,
-      type: 2}
-    numObjectInPool: 5
-    canGrow: 1
+    canGrow: 0
   - objectToPool: {fileID: 1794622370154868, guid: d4d47ae55b54c495e992a173c734c87f,
       type: 2}
-    numObjectInPool: 5
-    canGrow: 1
-  - objectToPool: {fileID: 1031743881609316, guid: 3ffd9caab419fe94090d3b51fa7a7a4f,
-      type: 2}
-    numObjectInPool: 5
-    canGrow: 1
-  - objectToPool: {fileID: 1066390231271816, guid: 0b2bea6de2b5aee49857a644d984172f,
-      type: 2}
-    numObjectInPool: 1
+    numObjectInPool: 6
     canGrow: 0
   - objectToPool: {fileID: 1135431978971280, guid: b83c65a06e368d3459647b5ebf522e29,
       type: 2}
     numObjectInPool: 5
-    canGrow: 1
+    canGrow: 0
   - objectToPool: {fileID: 1978913135142572, guid: db2ff3aed3db6934190256660aa2661e,
       type: 2}
-    numObjectInPool: 5
+    numObjectInPool: 2
     canGrow: 0
   - objectToPool: {fileID: 1819850798772316, guid: 54b440aec47430e40b49bd421ed58c67,
       type: 2}
-    numObjectInPool: 5
+    numObjectInPool: 2
     canGrow: 0
+  - objectToPool: {fileID: 1144553111952280, guid: bdd7ff14e15f559429b8ee6cc44ed1f4,
+      type: 2}
+    numObjectInPool: 2
+    canGrow: 1
+  - objectToPool: {fileID: 1031743881609316, guid: 3ffd9caab419fe94090d3b51fa7a7a4f,
+      type: 2}
+    numObjectInPool: 2
+    canGrow: 1
+  - objectToPool: {fileID: 1066390231271816, guid: 0b2bea6de2b5aee49857a644d984172f,
+      type: 2}
+    numObjectInPool: 2
+    canGrow: 1

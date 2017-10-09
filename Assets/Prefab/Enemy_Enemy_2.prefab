@@ -288,7 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0a057b00c9662c449457ff923d38e32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dodge: 1
+  dodge: 2
   smoothing: 3
   startWait: {x: 0.2, y: 0.5}
   evadeTime: {x: 0.5, y: 3}

@@ -9,12 +9,9 @@ using UnityEngine.UI;
 public struct EnemyDetails
 {
     public int level;
+    public Vector2 initSpeed;
+    public int initNumOfObjects;
     public GameObject gameObject;    
-}
-
-private struct WaveDetails
-{
-
 }
 
 public class GameController : MonoBehaviour 
@@ -33,10 +30,10 @@ public class GameController : MonoBehaviour
     public Text scoreGuiText;
     public GameObject gameOverMenu;
 
-    private Dictionary<int, List<GameObject>> m_enemyMaps;
+    private Dictionary<int, List<EnemyDetails>> m_enemyMaps;
     private int m_playerScore = 0;
     private int m_numOfPassedWaves = 0;
-    private int m_level;
+    private int m_level = 1;
     private bool bGameOver = false;
     private bool bRestart = false;
 
@@ -45,6 +42,8 @@ public class GameController : MonoBehaviour
         sharedInstance = this;
 
         Random.InitState( (int) System.DateTime.Now.Ticks);
+
+        initEnemyLevelMap();
 
         StartCoroutine(SpawnEnemies());
 
@@ -79,9 +78,12 @@ public class GameController : MonoBehaviour
     {
         yield return new WaitForSeconds(delayStart);
 
+        List<EnemyDetails> waveDetails = getLevelEnemyDetials(m_level);
+
         while (true)
         {
-            yield return spawnEnemies();
+            randomizeEnemyCharacteristics(waveDetails, m_numOfPassedWaves, m_level);
+            yield return spawnEnemies(waveDetails);
 
             yield return new WaitForSeconds(delayWave);
 
@@ -99,18 +101,18 @@ public class GameController : MonoBehaviour
             {
                 m_numOfPassedWaves = 0;
                 m_level++;
+                waveDetails = getLevelEnemyDetials(m_level);
             }
         }
     }
 
     // Coroutine to spawn elements
-    IEnumerator spawnEnemies()
+    IEnumerator spawnEnemies(List<EnemyDetails> waveDetails)
     {
-        WaveDetails waveDetail = getWave();
 
-        foreach (EnemyDetails enemy in waveDetail.enemies)
+        foreach (EnemyDetails enemy in waveDetails)
         {
-            for (int i = 0; i < enemy.numOfEnemies; i++)
+            for (int i = 0; i < enemy.initNumOfObjects; i++)
             {
                 spawnObject(enemy);
 
@@ -118,7 +120,7 @@ public class GameController : MonoBehaviour
             }
         }
     }
-        
+       
     public void addScore(int incScore)
     {
         m_playerScore += incScore;
@@ -129,6 +131,21 @@ public class GameController : MonoBehaviour
     public void gameOver()
     {
         bGameOver = true;
+    }
+
+    private List<EnemyDetails> getLevelEnemyDetials(int level)
+    {
+        return m_enemyMaps.Where(pair => (pair.Key <= level)).Select(pair => pair.Value).SelectMany(e => e).ToList();
+    }
+
+    private void randomizeEnemyCharacteristics(List<EnemyDetails> enemies, int wave, int level)
+    {
+        for(int iEnemy = 0; iEnemy < enemies.Count; iEnemy++)
+        {
+            EnemyDetails enemyDetail = enemies[iEnemy];
+            enemyDetail.initSpeed = new Vector2(Mathf.Exp(enemyDetail.initSpeed.x * level), Mathf.Exp(enemyDetail.initSpeed.y * level));
+            enemyDetail.initNumOfObjects = Mathf.RoundToInt(enemies[iEnemy].initNumOfObjects * (level / 2) * (wave / 2));
+        }
     }
 
     private void updateScore()
@@ -154,13 +171,6 @@ public class GameController : MonoBehaviour
         } 
     }
 
-    private WaveDetails getWave()
-    {
-        int waveIndex = Random.Range(0, waves.Count);
-
-        return waves[waveIndex];
-    }
-
     private void spawnObject(EnemyDetails enemyDetails)
     {
         Vector3 topRight = Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth, Camera.main.pixelHeight));
@@ -180,7 +190,7 @@ public class GameController : MonoBehaviour
         {
             enemy.transform.position = spawnLocation;
             enemy.SetActive(true);
-            generateEnemiesMovement(enemy, enemyDetails.minSpeed, enemyDetails.maxSpeed);
+            generateEnemiesMovement(enemy, enemyDetails.initSpeed.x, enemyDetails.initSpeed.y);
         }
     }
 
@@ -198,14 +208,15 @@ public class GameController : MonoBehaviour
 
     private void initEnemyLevelMap()
     {
+        m_enemyMaps = new Dictionary<int, List<EnemyDetails>>();
         foreach (var enemy in enemyDetails)
         {
             if (!m_enemyMaps.ContainsKey(enemy.level))
             {
-                m_enemyMaps.Add(enemy.level, new List<GameObject>());
+                m_enemyMaps.Add(enemy.level, new List<EnemyDetails>());
             }
 
-            m_enemyMaps[enemy.level].Add(enemy.gameObject);
+            m_enemyMaps[enemy.level].Add(enemy);
         }
     }
 }
